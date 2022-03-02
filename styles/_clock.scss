@@ -3,15 +3,15 @@
   flex-direction: row;
   flex-flow: wrap;
 }
-
 .clock-container {
   margin: 8px;
   padding: 8px;
   border: 1px solid #ddd;
   background-color: #fffdfd;
-}
-.clock-container * {
-  margin: 8px;
+
+  * {
+    margin: 8px;
+  }
 }
 
 .clock-time-display {
@@ -24,9 +24,3 @@
 .clock-container.night {
   background-color: #333;
 }
-
-*,
-::before,
-::after {
-  box-sizing: border-box;
-}/*# sourceMappingURL=main.css.map */
