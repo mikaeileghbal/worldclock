@@ -10,12 +10,15 @@ export default class Clock {
     this.EDIT = "EDIT";
     this.NO_EDIT = "NO_EDIT";
     this.state = this.EDIT;
-    this.hour = 0;
+    this.hour = "";
     this.fragment = new DocumentFragment();
     this.container = document.createElement("div");
     this.timeDisplay = document.createElement("div");
     this.cityDisplay = document.createElement("div");
     this.dateDisplay = document.createElement("div");
+    this.form = document.createElement("div");
+    this.label = document.createElement("label");
+    this.input = document.createElement("input");
     this.options = {
       timeZone: "Europe/Berlin",
       timeStyle: "medium",
@@ -36,14 +39,26 @@ export default class Clock {
     //   hourCycle: "h24",
     // });
     this.setCityTimeZone(this.city);
-    const time = new Date().toLocaleTimeString("en-US", this.options);
-    return time;
+    const currentTime = new Date().toLocaleTimeString("en-US", this.options);
+    this.hour = currentTime.substring(0, 2);
+
+    return currentTime;
   }
 
   tick() {
     setInterval(() => {
       this.timeDisplay.textContent = this.getCurrentTime();
     }, 500);
+  }
+
+  tickHour() {
+    setInterval(() => {
+      if (this.hour >= 1 && this.hour <= 12) {
+        this.container.classList.add("night");
+      } else {
+        this.container.classList.remove("night");
+      }
+    }, 1000);
   }
 
   Draw() {
@@ -54,7 +69,7 @@ export default class Clock {
 
     this.timeDisplay.textContent = this.getCurrentTime();
     this.cityDisplay.textContent = this.city;
-    this.dateDisplay.textContent = new Date();
+    this.dateDisplay.textContent = new Date().toLocaleDateString();
 
     this.container.append(this.timeDisplay, this.cityDisplay, this.dateDisplay);
 
@@ -70,6 +85,7 @@ export default class Clock {
     this.fragment.appendChild(this.container);
 
     this.tick();
+    this.tickHour();
     return this.fragment;
   }
 }
