@@ -10,7 +10,7 @@ export default class Clock {
     this.EDIT = "EDIT";
     this.NO_EDIT = "NO_EDIT";
     this.state = this.EDIT;
-    this.hout = 0;
+    this.hour = 0;
     this.fragment = new DocumentFragment();
     this.container = document.createElement("div");
     this.timeDisplay = document.createElement("div");
