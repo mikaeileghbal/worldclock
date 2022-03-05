@@ -8,6 +8,87 @@
     <title>Document</title>
   </head>
   <body>
+    <template id="world-clock-template">
+      <div class="world-clock-container">
+        <div class="world-clock-time">12:25</div>
+        <div class="world-clock-city">Berlin</div>
+        <div class="world-clock-date">3 dec 2022</div>
+        <div class="world-clock-form-containr">
+          <form action="">
+            <p>
+              <label for="city">City</label>
+              <select name="city" id="city">
+                <option value="tehran">Tehran</option>
+                <option value="tehran">London</option>
+                <option value="tehran">Berlin</option>
+              </select>
+            </p>
+            <p>
+              <button class="button-add">Add</button>
+            </p>
+          </form>
+        </div>
+      </div>
+      <style>
+        .world-clock-container {
+          border: 1px solid lightslategray;
+          background-color: #eee;
+          border-radius: 10px;
+          padding: 20px;
+          margin: 8px;
+        }
+        .world-clock-container > * {
+          margin: 6px;
+        }
+        .world-clock-time {
+          font-size: 40px;
+          text-align: center;
+        }
+        .world-clock-city {
+          font-size: 18px;
+          font-weight: bold;
+        }
+        input {
+          display: block;
+          width: 100%;
+        }
+        form {
+          font-size: 18px;
+        }
+        .button-add {
+          display: block;
+          width: 100%;
+          padding: 8px 16px;
+          font-size: 100%;
+          border: none;
+          color: white;
+          background-color: #72ac25;
+          transition: 0.2s;
+        }
+        .button-add:hover {
+          background-color: #649b1d;
+        }
+        select {
+          padding: 8px 16px;
+          font-size: 18px;
+          border: 1px solid #72ac25;
+        }
+        select:focus {
+          outline: none;
+        }
+      </style>
+    </template>
+
     <h1>World Clock</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, illo!
+    </p>
+
+    <div id="clock-wrapper">
+      <world-clock></world-clock>
+    </div>
+    <button id="addClock">&plus;</button>
+
+    <script src="./src/Clock.js"></script>
   </body>
 </html>
