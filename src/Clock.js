@@ -5,14 +5,53 @@ const timeZones = {
 };
 
 class WorldClock extends HTMLElement {
+  static get observedAttributes() {
+    return ["city"];
+  }
+
+  #EDIT = "EDIT";
+  #NO_EDIT = "NO_EDIT";
+  #options = {
+    timeZone: "Europe/Berlin",
+    timeStyle: "medium",
+    hourCycle: "h24",
+  };
+
   constructor() {
     super();
 
     const shadow = this.attachShadow({ mode: "open" });
 
-    const template = document.getElementById("world-clock-template");
-    const newClock = template.content.cloneNode(true);
+    const template = document.getElementById("world-clock-template").content;
+    const newClock = template.cloneNode(true);
+
+    this.time = newClock.querySelector(".world-clock-time");
+    this.city = newClock.querySelector(".world-clock-city");
+    this.date = newClock.querySelector(".world-clock-date");
+    this.btnEdit = newClock.querySelector(".button-edit");
+    this.btnDelete = newClock.querySelector(".button-delete");
+    const citySelect = newClock.getElementById("city");
+
+    console.log(this.btnEdit);
+    console.log(this.btnDelete);
+    this.date.textContent = new Date().toLocaleDateString();
+
+    citySelect.addEventListener("input", (event) => {
+      this.setAttribute("city", citySelect.value);
+    });
+
+    this.btnEdit.addEventListener("click", (event) => {
+      event.preventDefault();
+      console.log("edit mode");
+    });
+
+    this.btnDelete.addEventListener("click", (event) => {
+      event.preventDefault();
+      console.log("delete");
+    });
+
     shadow.appendChild(newClock);
+    this.tick();
   }
 
   connectedCallback() {}
@@ -21,7 +60,41 @@ class WorldClock extends HTMLElement {
 
   adoptedCallback() {}
 
-  attributeChangedCallback(name, oldValue, newValue) {}
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === "city") {
+      this.setCityTimeZone();
+      this.city.textContent = newValue;
+    }
+  }
+
+  setCityTimeZone() {
+    for (const key in timeZones) {
+      if (key.toLowerCase() === this.getAttribute("city").toLowerCase()) {
+        this.#options.timeZone = timeZones[key];
+      }
+    }
+  }
+
+  getCurrentTime() {
+    // {
+    //   timeZone: "Asia/Tehran",
+    //   timeStyle: "medium",
+    //   hourCycle: "h24",
+    // });
+
+    const currentTime = new Date().toLocaleTimeString("en-US", this.#options);
+    //this.hour = currentTime.substring(0, 2);
+
+    return currentTime;
+  }
+
+  displayTime = () => {
+    this.time.textContent = this.getCurrentTime();
+  };
+
+  tick() {
+    setInterval(this.displayTime, 50);
+  }
 }
 
 customElements.define("world-clock", WorldClock);
@@ -29,10 +102,17 @@ customElements.define("world-clock", WorldClock);
 const wrapper = document.getElementById("clock-wrapper");
 
 const add = document.getElementById("addClock");
+
 add.addEventListener("click", addClock);
 
+window.addEventListener("DOMContentLoaded", load);
+
+function load(event) {
+  addClock(event);
+}
 function addClock(event) {
   const clock = document.createElement("world-clock");
+  clock.setAttribute("city", "tehran");
   wrapper.append(clock);
 }
 
@@ -51,37 +131,9 @@ function addClock(event) {
 //     this.form = document.createElement("div");
 //     this.label = document.createElement("label");
 //     this.input = document.createElement("input");
-//     this.options = {
-//       timeZone: "Europe/Berlin",
-//       timeStyle: "medium",
-//       hourCycle: "h24",
-//     };
+//
 //   }
-//   setCityTimeZone(city) {
-//     for (const key in timeZones) {
-//       if (key.toLowerCase() === city.toLowerCase()) {
-//         this.options.timeZone = timeZones[key];
-//       }
-//     }
-//   }
-//   getCurrentTime() {
-//     // return new Date().toLocaleTimeString("en-US", {
-//     //   timeZone: "Asia/Tehran",
-//     //   timeStyle: "medium",
-//     //   hourCycle: "h24",
-//     // });
-//     this.setCityTimeZone(this.city);
-//     const currentTime = new Date().toLocaleTimeString("en-US", this.options);
-//     this.hour = currentTime.substring(0, 2);
-
-//     return currentTime;
-//   }
-
-//   tick() {
-//     setInterval(() => {
-//       this.timeDisplay.textContent = this.getCurrentTime();
-//     }, 500);
-//   }
+//
 
 //   tickHour() {
 //     setInterval(() => {
