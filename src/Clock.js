@@ -32,8 +32,6 @@ class WorldClock extends HTMLElement {
     this.btnDelete = newClock.querySelector(".button-delete");
     const citySelect = newClock.getElementById("city");
 
-    console.log(this.btnEdit);
-    console.log(this.btnDelete);
     this.date.textContent = new Date().toLocaleDateString();
 
     citySelect.addEventListener("input", (event) => {
@@ -48,6 +46,7 @@ class WorldClock extends HTMLElement {
     this.btnDelete.addEventListener("click", (event) => {
       event.preventDefault();
       console.log("delete");
+      this.remove();
     });
 
     shadow.appendChild(newClock);
@@ -76,15 +75,7 @@ class WorldClock extends HTMLElement {
   }
 
   getCurrentTime() {
-    // {
-    //   timeZone: "Asia/Tehran",
-    //   timeStyle: "medium",
-    //   hourCycle: "h24",
-    // });
-
     const currentTime = new Date().toLocaleTimeString("en-US", this.#options);
-    //this.hour = currentTime.substring(0, 2);
-
     return currentTime;
   }
 
@@ -110,6 +101,7 @@ window.addEventListener("DOMContentLoaded", load);
 function load(event) {
   addClock(event);
 }
+
 function addClock(event) {
   const clock = document.createElement("world-clock");
   clock.setAttribute("city", "tehran");
