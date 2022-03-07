@@ -1,9 +1,14 @@
 const timeZones = {
   tehran: "Asia/Tehran",
-  london: "Europe/London",
   berlin: "Europe/Berlin",
+  london: "Europe/London",
+  "new york": "America/New_York",
+  toronto: "America/Toronto",
+  tokyo: "Asia/Tokyo",
+  istanbul: "Asia/Istanbul",
 };
 
+const weekDays = ["Son", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 class WorldClock extends HTMLElement {
   static get observedAttributes() {
     return ["city"];
@@ -11,6 +16,7 @@ class WorldClock extends HTMLElement {
 
   #EDIT = "EDIT";
   #NO_EDIT = "NO_EDIT";
+  #state;
   #options = {
     timeZone: "Europe/Berlin",
     timeStyle: "medium",
@@ -25,22 +31,44 @@ class WorldClock extends HTMLElement {
     const template = document.getElementById("world-clock-template").content;
     const newClock = template.cloneNode(true);
 
+    this.#state = this.#EDIT;
     this.time = newClock.querySelector(".world-clock-time");
     this.city = newClock.querySelector(".world-clock-city");
+    this.cityList = newClock.querySelector("#city-list");
     this.date = newClock.querySelector(".world-clock-date");
     this.btnEdit = newClock.querySelector(".button-edit");
     this.btnDelete = newClock.querySelector(".button-delete");
-    const citySelect = newClock.getElementById("city");
+    this.citySelect = newClock.getElementById("city");
 
-    this.date.textContent = new Date().toLocaleDateString();
+    const date = new Date();
+    this.date.textContent =
+      weekDays[date.getDay()] + " " + date.toLocaleDateString();
 
-    citySelect.addEventListener("input", (event) => {
-      this.setAttribute("city", citySelect.value);
+    //this.cityList.replaceChildren(...this.getCityList(timeZones));
+    const cities = this.getCityList(timeZones);
+    this.cityList.replaceChildren(...cities);
+
+    this.citySelect.focus();
+    this.citySelect.addEventListener("input", (event) => {
+      //this.setAttribute("city", citySelect.value);
     });
 
     this.btnEdit.addEventListener("click", (event) => {
       event.preventDefault();
       console.log("edit mode");
+      if (this.citySelect.value) {
+        if (this.#state === this.#EDIT) {
+          this.setAttribute("city", this.citySelect.value);
+          this.#state = this.#NO_EDIT;
+          this.citySelect.disabled = true;
+          this.btnEdit.textContent = "Edit";
+        } else {
+          this.#state = this.#EDIT;
+          this.citySelect.disabled = false;
+          this.btnEdit.textContent = "Save";
+          this.citySelect.focus();
+        }
+      }
     });
 
     this.btnDelete.addEventListener("click", (event) => {
@@ -62,8 +90,20 @@ class WorldClock extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     if (name === "city") {
       this.setCityTimeZone();
-      this.city.textContent = newValue;
+      //this.city.textContent = newValue;
     }
+  }
+
+  setState(state) {}
+
+  getCityList(list) {
+    const collection = [];
+    for (const key in list) {
+      const option = new Option();
+      option.value = key;
+      collection.push(option);
+    }
+    return collection;
   }
 
   setCityTimeZone() {
