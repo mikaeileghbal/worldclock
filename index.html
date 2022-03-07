@@ -17,7 +17,14 @@
           <form action="">
             <p>
               <label for="city">City</label>
-              <input name="city" id="city" list="cities" />
+              <input
+                name="city"
+                list="city-list"
+                id="city"
+                list="cities"
+                autocomplete="false"
+              />
+              <datalist id="city-list"> </datalist>
             </p>
             <p>
               <button class="button-edit">Edit</button>

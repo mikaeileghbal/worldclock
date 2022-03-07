@@ -1,7 +1,11 @@
 const timeZones = {
   tehran: "Asia/Tehran",
-  london: "Europe/London",
   berlin: "Europe/Berlin",
+  london: "Europe/London",
+  "new york": "America/New_York",
+  toronto: "America/Toronto",
+  tokyo: "Asia/Tokyo",
+  istanbul: "Asia/Istanbul",
 };
 
 class WorldClock extends HTMLElement {
@@ -27,12 +31,17 @@ class WorldClock extends HTMLElement {
 
     this.time = newClock.querySelector(".world-clock-time");
     this.city = newClock.querySelector(".world-clock-city");
+    this.cityList = newClock.querySelector("#city-list");
     this.date = newClock.querySelector(".world-clock-date");
     this.btnEdit = newClock.querySelector(".button-edit");
     this.btnDelete = newClock.querySelector(".button-delete");
     const citySelect = newClock.getElementById("city");
 
     this.date.textContent = new Date().toLocaleDateString();
+
+    //this.cityList.replaceChildren(...this.getCityList(timeZones));
+    const cities = this.getCityList(timeZones);
+    this.cityList.replaceChildren(...cities);
 
     citySelect.addEventListener("input", (event) => {
       this.setAttribute("city", citySelect.value);
@@ -64,6 +73,16 @@ class WorldClock extends HTMLElement {
       this.setCityTimeZone();
       this.city.textContent = newValue;
     }
+  }
+
+  getCityList(list) {
+    const collection = [];
+    for (const key in list) {
+      const option = new Option();
+      option.value = key;
+      collection.push(option);
+    }
+    return collection;
   }
 
   setCityTimeZone() {
