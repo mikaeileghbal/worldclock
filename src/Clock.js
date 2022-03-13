@@ -48,9 +48,14 @@ class WorldClock extends HTMLElement {
     const cities = this.getCityList(timeZones);
     this.cityList.replaceChildren(...cities);
 
+<<<<<<< HEAD
     this.citySelect.focus();
     this.citySelect.addEventListener("input", (event) => {
       //this.setAttribute("city", citySelect.value);
+=======
+    citySelect.addEventListener("input", (event) => {
+      this.setAttribute("city", citySelect.value);
+>>>>>>> 37c443942f13065ea48b0ffe0d85df48cdaf7ccf
     });
 
     this.btnEdit.addEventListener("click", (event) => {
@@ -95,6 +100,16 @@ class WorldClock extends HTMLElement {
   }
 
   setState(state) {}
+
+  getCityList(list) {
+    const collection = [];
+    for (const key in list) {
+      const option = new Option();
+      option.value = key;
+      collection.push(option);
+    }
+    return collection;
+  }
 
   getCityList(list) {
     const collection = [];
