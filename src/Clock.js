@@ -55,7 +55,6 @@ class WorldClock extends HTMLElement {
 
     this.btnEdit.addEventListener("click", (event) => {
       event.preventDefault();
-      console.log("edit mode");
       if (this.citySelect.value) {
         if (this.#state === this.#EDIT) {
           this.setAttribute("city", this.citySelect.value);
@@ -73,12 +72,16 @@ class WorldClock extends HTMLElement {
 
     this.btnDelete.addEventListener("click", (event) => {
       event.preventDefault();
-      console.log("delete");
       this.remove();
+      const deleteEvent = new CustomEvent("deleted", {
+        detail: {
+          id: this.getAttribute("id"),
+        },
+      });
+      this.dispatchEvent(deleteEvent);
     });
 
     shadow.appendChild(newClock);
-    this.tick();
   }
 
   connectedCallback() {}
@@ -132,86 +135,40 @@ class WorldClock extends HTMLElement {
   displayTime = () => {
     this.time.textContent = this.getCurrentTime();
   };
-
-  tick() {
-    setInterval(this.displayTime, 50);
-  }
 }
 
 customElements.define("world-clock", WorldClock);
 
 const wrapper = document.getElementById("clock-wrapper");
-
 const add = document.getElementById("addClock");
 
 add.addEventListener("click", addClock);
-
 window.addEventListener("DOMContentLoaded", load);
 
 function load(event) {
   addClock(event);
 }
 
+let clockCollection = {};
+addClock.nextIndex = 0;
 function addClock(event) {
   const clock = document.createElement("world-clock");
   clock.setAttribute("city", "tehran");
+  clockCollection[addClock.nextIndex] = clock;
+  clock.setAttribute("id", addClock.nextIndex++);
+
+  clock.addEventListener("deleted", (event) => {
+    const deletedItemId = event.detail.id;
+    delete clockCollection[deletedItemId];
+  });
+
   wrapper.append(clock);
 }
 
-// export default class Clock {
-//   constructor(city) {
-//     this.city = city;
-//     this.EDIT = "EDIT";
-//     this.NO_EDIT = "NO_EDIT";
-//     this.state = this.EDIT;
-//     this.hour = "";
-//     this.fragment = new DocumentFragment();
-//     this.container = document.createElement("div");
-//     this.timeDisplay = document.createElement("div");
-//     this.cityDisplay = document.createElement("div");
-//     this.dateDisplay = document.createElement("div");
-//     this.form = document.createElement("div");
-//     this.label = document.createElement("label");
-//     this.input = document.createElement("input");
-//
-//   }
-//
+function timerTick() {
+  for (key in clockCollection) {
+    clockCollection[key].displayTime();
+  }
+}
 
-//   tickHour() {
-//     setInterval(() => {
-//       if (this.hour >= 1 && this.hour <= 12) {
-//         this.container.classList.add("night");
-//       } else {
-//         this.container.classList.remove("night");
-//       }
-//     }, 1000);
-//   }
-
-//   Draw() {
-//     this.container.className = "clock-container";
-//     this.timeDisplay.className = "clock-time-display";
-//     this.cityDisplay.className = "clock-city";
-//     this.dateDisplay.className = "clock-date";
-
-//     this.timeDisplay.textContent = this.getCurrentTime();
-//     this.cityDisplay.textContent = this.city;
-//     this.dateDisplay.textContent = new Date().toLocaleDateString();
-
-//     this.container.append(this.timeDisplay, this.cityDisplay, this.dateDisplay);
-
-//     const noedit = document.createElement("p");
-
-//     if (this.state === this.NO_EDIT) {
-//       noedit.textContent = "No edit";
-//     } else if (this.state === this.EDIT) {
-//       noedit.textContent = "Edit";
-//     }
-//     this.container.appendChild(noedit);
-
-//     this.fragment.appendChild(this.container);
-
-//     this.tick();
-//     this.tickHour();
-//     return this.fragment;
-//   }
-// }
+setInterval(timerTick, 500);
