@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="/styles/main.css" />
     <title>Document</title>
   </head>
@@ -11,70 +15,102 @@
     <template id="world-clock-template">
       <div class="world-clock-container">
         <div class="world-clock-time">12:25</div>
-        <div class="world-clock-city">Berlin</div>
-        <div class="world-clock-date">3 dec 2022</div>
         <div class="world-clock-form-containr">
           <form action="">
-            <p>
-              <label for="city">City</label>
-              <select name="city" id="city">
-                <option value="tehran">Tehran</option>
-                <option value="tehran">London</option>
-                <option value="tehran">Berlin</option>
-              </select>
-            </p>
-            <p>
-              <button class="button-add">Add</button>
-            </p>
+            <div class="row">
+              <input
+                name="city"
+                list="city-list"
+                id="city"
+                list="cities"
+                autocomplete="false"
+                placeholder="City..."
+              />
+              <button class="button-edit">Save</button>
+              <button class="button-delete">x</button>
+              <datalist id="city-list"> </datalist>
+            </div>
           </form>
         </div>
+        <div class="world-clock-date">3 dec 2022</div>
       </div>
+
       <style>
+        * {
+          box-sizing: border-box;
+          font-family: Arial, Helvetica, sans-serif;
+        }
         .world-clock-container {
-          border: 1px solid lightslategray;
+          position: relative;
           background-color: #eee;
           border-radius: 10px;
-          padding: 20px;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          padding: 30px 8px 10px;
           margin: 8px;
+          width: 170px;
         }
         .world-clock-container > * {
-          margin: 6px;
+        }
+        .world-clock-date {
+          font-size: 14px;
         }
         .world-clock-time {
-          font-size: 40px;
+          font-size: 36px;
           text-align: center;
         }
         .world-clock-city {
-          font-size: 18px;
+          display: none;
+          font-size: 24px;
           font-weight: bold;
+          text-transform: capitalize;
         }
-        input {
-          display: block;
-          width: 100%;
-        }
+
         form {
-          font-size: 18px;
-        }
-        .button-add {
-          display: block;
           width: 100%;
-          padding: 8px 16px;
-          font-size: 100%;
-          border: none;
-          color: white;
-          background-color: #72ac25;
-          transition: 0.2s;
-        }
-        .button-add:hover {
-          background-color: #649b1d;
-        }
-        select {
-          padding: 8px 16px;
+          text-align: left;
           font-size: 18px;
-          border: 1px solid #72ac25;
         }
-        select:focus {
+
+        input {
+          display: inline-block;
+          width: 60%;
+          padding: 4px 8px;
+          font-size: 16px;
+          font-weight: 600;
+          border: 1px solid #7091c2;
+        }
+        input:focus {
           outline: none;
+        }
+        input:disabled {
+          border: 1px solid transparent;
+          padding-left: 0;
+          background-color: inherit;
+          text-transform: capitalize;
+        }
+        button {
+          display: inline-block;
+          border-radius: 16px;
+          border: none;
+          cursor: pointer;
+          padding: 2px 8px;
+          background-image: linear-gradient(to bottom, #7091c2, #1e58af);
+          color: white;
+        }
+
+        .button-delete {
+          border-radius: 50%;
+          position: Absolute;
+          top: 4px;
+          right: 4px;
+          padding: 4px 8px;
+          background-image: none;
+          color: #1e58af;
+        }
+
+        .button-delete:hover {
+          background-image: linear-gradient(to bottom, #7091c2, #1e58af);
+          color: white;
         }
       </style>
     </template>
@@ -85,7 +121,7 @@
     </p>
 
     <div id="clock-wrapper">
-      <world-clock></world-clock>
+      <!-- <world-clock></world-clock> -->
     </div>
     <button id="addClock">&plus;</button>
 

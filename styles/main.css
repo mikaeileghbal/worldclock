@@ -40,4 +40,27 @@
   border-radius: 50%;
   box-sizing: unset;
   border: 2px solid #72ac25;
+}
+
+world-clock {
+  -webkit-animation: appear 0.5s;
+          animation: appear 0.5s;
+}
+
+@-webkit-keyframes appear {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes appear {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }/*# sourceMappingURL=main.css.map */
