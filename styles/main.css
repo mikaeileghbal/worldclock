@@ -1,7 +1,13 @@
 #clock-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  flex-flow: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
   max-width: 800px;
   margin: 0 auto;
 }
@@ -12,6 +18,7 @@
   border: 1px solid #ddd;
   background-color: #fffdfd;
 }
+
 .clock-container * {
   margin: 8px;
 }
@@ -31,17 +38,17 @@
 *,
 ::before,
 ::after {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 #addClock {
-  padding: 22px 22px;
-  width: 50px;
-  height: 50px;
-  font-size: 50px;
+  padding: 8px 12px;
+  font-size: 16px;
   border-radius: 50%;
-  box-sizing: unset;
-  border: 2px solid #72ac25;
+  -webkit-box-sizing: unset;
+          box-sizing: unset;
+  border: 1px solid transparent;
 }
 
 world-clock {
@@ -51,18 +58,23 @@ world-clock {
 
 @-webkit-keyframes appear {
   0% {
-    transform: scale(0);
+    -webkit-transform: scale(0);
+            transform: scale(0);
   }
   100% {
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 
 @keyframes appear {
   0% {
-    transform: scale(0);
+    -webkit-transform: scale(0);
+            transform: scale(0);
   }
   100% {
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
-}/*# sourceMappingURL=main.css.map */
+}
+/*# sourceMappingURL=main.css.map */
