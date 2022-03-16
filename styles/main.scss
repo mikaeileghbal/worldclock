@@ -10,6 +10,8 @@
 
 body {
 	background-color: rgb(199, 192, 163);
+	margin-left: 250px;
+	margin-top: 20px;
 }
 #addClock {
 	padding: 4px 4px;
@@ -35,6 +37,7 @@ world-clock {
 	}
 }
 footer {
+	display: none;
 	width: 100%;
 	padding: 5px;
 	background-color: rgba(0, 0, 0, 0.8);
@@ -45,10 +48,65 @@ footer {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-
 	color: white;
 	width: 100%;
 	padding: 8px 0;
 	max-width: 1240px;
 	margin: 0 auto;
+}
+
+.list-container {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 200px;
+	height: 100%;
+	padding: 8px;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+#cityInput {
+	background-image: url("../images/search.png");
+	background-position: 10px 10px;
+	background-repeat: no-repeat;
+	background-size: 18px 18px;
+	width: 100%;
+	font-size: 14px;
+	font-weight: 500;
+	padding: 10px 20px 10px 40px;
+	margin-bottom: 10px;
+	border: 1px solid rgb(136, 132, 113);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 18px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 25px;
+}
+#cityInput:focus {
+	outline: none;
+}
+ul {
+	border: 1px solid rgb(136, 132, 113);
+	border-radius: 8px;
+	overflow: hidden;
+}
+ul button {
+	border: none;
+	background-color: rgba(0, 0, 0, 0.1);
+	padding: 8px 20px;
+	font-size: 14px;
+	color: #ddd;
+	display: block;
+	width: 100%;
+	text-align: left;
+	text-transform: capitalize;
+	cursor: pointer;
+	transition: 0.2s;
+	&:hover {
+		background-color: rgb(170, 162, 122);
+		color: white;
+		font-weight: 500;
+		padding-left: 24px;
+	}
+	&:active {
+		background-color: rgb(136, 132, 113);
+	}
 }
