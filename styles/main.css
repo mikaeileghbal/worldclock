@@ -1,8 +1,14 @@
 #clock-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  flex-flow: wrap;
-  max-width: 800px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
+  max-width: 1240px;
   margin: 0 auto;
 }
 
@@ -12,6 +18,7 @@
   border: 1px solid #ddd;
   background-color: #fffdfd;
 }
+
 .clock-container * {
   margin: 8px;
 }
@@ -28,18 +35,123 @@
   color: white;
 }
 
+.analog-clock {
+  margin: 50px 200px;
+  width: 250px;
+  height: 250px;
+  background-color: #ddd;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 50%;
+}
+
+.analog-clock::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: black;
+  border-radius: 50%;
+  z-index: 20;
+}
+
+.hour,
+.min,
+.sec {
+  position: absolute;
+}
+
+.hour,
+#hr {
+  width: 160px;
+  height: 160px;
+}
+
+.min,
+#mn {
+  width: 190px;
+  height: 190px;
+}
+
+.sec,
+#sc {
+  width: 230px;
+  height: 230px;
+}
+
+#hr,
+#mn,
+#sc {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  border-radius: 50%;
+}
+
+#hr::before {
+  position: absolute;
+  content: "";
+  width: 8px;
+  height: 80px;
+  background-color: #ff105e;
+  z-index: 10;
+  border-radius: 6px 6px 0 0;
+}
+
+#mn::before {
+  position: absolute;
+  content: "";
+  width: 4px;
+  height: 90px;
+  background-color: #fff;
+  z-index: 11;
+  border-radius: 6px 6px 0 0;
+}
+
+#sc::before {
+  position: absolute;
+  content: "";
+  width: 2px;
+  height: 150px;
+  background-color: #fff;
+  z-index: 12;
+  border-radius: 6px 6px 0 0;
+}
+
 *,
 ::before,
 ::after {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #c7c0a3;
 }
 
 #addClock {
-  padding: 8px 12px;
+  padding: 4px 4px;
+  width: 25px;
+  height: 25px;
   font-size: 16px;
+  font-weight: 800;
   border-radius: 50%;
-  box-sizing: unset;
-  border: 1px solid transparent;
+  -webkit-box-sizing: unset;
+          box-sizing: unset;
+  border: 2px solid #72ac25;
 }
 
 world-clock {
@@ -49,18 +161,48 @@ world-clock {
 
 @-webkit-keyframes appear {
   0% {
-    transform: scale(0);
+    -webkit-transform: scale(0);
+            transform: scale(0);
   }
   100% {
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 
 @keyframes appear {
   0% {
-    transform: scale(0);
+    -webkit-transform: scale(0);
+            transform: scale(0);
   }
   100% {
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
-}/*# sourceMappingURL=main.css.map */
+}
+
+footer {
+  width: 100%;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  bottom: 0;
+}
+
+.menu-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  width: 100%;
+  padding: 8px 0;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+/*# sourceMappingURL=main.css.map */

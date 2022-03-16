@@ -45,8 +45,8 @@ class WorldClock extends HTMLElement {
       weekDays[date.getDay()] + " " + date.toLocaleDateString();
 
     //this.cityList.replaceChildren(...this.getCityList(timeZones));
-    const cities = this.getCityList(timeZones);
-    this.cityList.replaceChildren(...cities);
+    // const cities = this.getCityList(timeZones);
+    // this.cityList.replaceChildren(...cities);
 
     this.citySelect.focus();
     this.citySelect.addEventListener("input", (event) => {
