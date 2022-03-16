@@ -1,111 +1,112 @@
 #clock-wrapper {
-  display: flex;
-  flex-direction: row;
-  flex-flow: wrap;
-  max-width: 1240px;
-  margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	flex-flow: wrap;
+	max-width: 1240px;
+	margin: 0 auto;
+	//background-color: #333;
 }
 .clock-container {
-  margin: 8px;
-  padding: 8px;
-  border: 1px solid #ddd;
-  background-color: #fffdfd;
+	margin: 8px;
+	padding: 8px;
+	border: 1px solid #ddd;
+	background-color: #fffdfd;
 
-  * {
-    margin: 8px;
-  }
+	* {
+		margin: 8px;
+	}
 }
 
 .clock-time-display {
-  padding: 8px;
-  background-color: cornflowerblue;
-  color: white;
-  font-size: 30px;
+	padding: 8px;
+	background-color: cornflowerblue;
+	color: white;
+	font-size: 30px;
 }
 
 .clock-container.night {
-  background-color: #333;
-  color: white;
+	background-color: #333;
+	color: white;
 }
 
-.analog-clock {
-  margin: 50px 200px;
-  width: 250px;
-  height: 250px;
-  background-color: #ddd;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-}
+// .analog-clock {
+//   margin: 50px 200px;
+//   width: 250px;
+//   height: 250px;
+//   background-color: #ddd;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   border-radius: 50%;
+// }
 
-.analog-clock::before {
-  content: "";
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  background-color: black;
-  border-radius: 50%;
-  z-index: 20;
-}
-.hour,
-.min,
-.sec {
-  position: absolute;
-}
+// .analog-clock::before {
+//   content: "";
+//   position: absolute;
+//   width: 15px;
+//   height: 15px;
+//   background-color: black;
+//   border-radius: 50%;
+//   z-index: 20;
+// }
+// .hour,
+// .min,
+// .sec {
+//   position: absolute;
+// }
 
-.hour,
-#hr {
-  width: 160px;
-  height: 160px;
-}
-.min,
-#mn {
-  width: 190px;
-  height: 190px;
-}
+// .hour,
+// #hr {
+//   width: 160px;
+//   height: 160px;
+// }
+// .min,
+// #mn {
+//   width: 190px;
+//   height: 190px;
+// }
 
-.sec,
-#sc {
-  width: 230px;
-  height: 230px;
-}
+// .sec,
+// #sc {
+//   width: 230px;
+//   height: 230px;
+// }
 
-#hr,
-#mn,
-#sc {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  border-radius: 50%;
-}
+// #hr,
+// #mn,
+// #sc {
+//   display: flex;
+//   justify-content: center;
+//   position: absolute;
+//   border-radius: 50%;
+// }
 
-#hr::before {
-  position: absolute;
-  content: "";
-  width: 8px;
-  height: 80px;
-  background-color: #ff105e;
-  z-index: 10;
-  border-radius: 6px 6px 0 0;
-}
+// #hr::before {
+//   position: absolute;
+//   content: "";
+//   width: 8px;
+//   height: 80px;
+//   background-color: #ff105e;
+//   z-index: 10;
+//   border-radius: 6px 6px 0 0;
+// }
 
-#mn::before {
-  position: absolute;
-  content: "";
-  width: 4px;
-  height: 90px;
-  background-color: #fff;
-  z-index: 11;
-  border-radius: 6px 6px 0 0;
-}
+// #mn::before {
+//   position: absolute;
+//   content: "";
+//   width: 4px;
+//   height: 90px;
+//   background-color: #fff;
+//   z-index: 11;
+//   border-radius: 6px 6px 0 0;
+// }
 
-#sc::before {
-  position: absolute;
-  content: "";
-  width: 2px;
-  height: 150px;
-  background-color: #fff;
-  z-index: 12;
-  border-radius: 6px 6px 0 0;
-}
+// #sc::before {
+//   position: absolute;
+//   content: "";
+//   width: 2px;
+//   height: 150px;
+//   background-color: #fff;
+//   z-index: 12;
+//   border-radius: 6px 6px 0 0;
+// }
