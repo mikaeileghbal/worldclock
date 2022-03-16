@@ -21,7 +21,21 @@
 	<body>
 		<template id="world-clock-template">
 			<div class="world-clock-container">
-				<div class="world-clock-time">12:25</div>
+				<div class="world-clock-time">
+					<div class="analog">
+						<div class="analog-clock">
+							<div class="hour">
+								<div id="hr"></div>
+							</div>
+							<div class="min">
+								<div id="mn"></div>
+							</div>
+							<div class="sec">
+								<div id="sc"></div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="world-clock-form-containr">
 					<form action="" autocomplete="off">
 						<div class="row">
@@ -31,8 +45,9 @@
 								id="city"
 								autocomplete="off"
 								placeholder="City..."
+								disabled
 							/>
-							<button class="button-edit">Save</button>
+							<button class="button-edit">Edit</button>
 							<button class="button-delete">x</button>
 							<datalist id="city-list"> </datalist>
 						</div>
@@ -48,32 +63,35 @@
 				}
 				.world-clock-container {
 					position: relative;
-					background-color: rgba(0, 0, 0, 0.01);
+					background-color: rgba(0, 0, 0, 0.05);
 					border-radius: 10px;
 					display: flex;
 					flex-flow: column nowrap;
 					align-items: center;
 					justify-content: center;
 					padding: 16px 8px 16px;
-					margin: 26px;
+					margin: 4px 26px;
 				}
 				.world-clock-date {
 					font-size: 14px;
 					display: none;
 				}
 				.world-clock-time {
+					position: relative;
 					font-size: 24px;
 					font-family: Arial, Helvetica, sans-serif;
+					background-image: url("images/clock.png");
+					background-repeat: no-repeat;
+					background-size: 100%;
 					margin: 12px auto;
 					width: 160px;
 					height: 160px;
-					padding-top: 50px;
 					font-weight: 600;
 					text-align: center;
 					border-radius: 50%;
-					background-color: white;
 					border: 6px solid #333;
-					box-shadow: 1px 2px 4px 2px rgba(0, 0, 0, 0.5);
+					box-shadow: 1px 2px 4px 2px rgba(0, 0, 0, 0.2);
+
 					color: black;
 				}
 				.world-clock-city {
@@ -134,6 +152,92 @@
 					top: 8px;
 					left: 4px;
 				}
+
+				.analog-clock {
+					position: absolute;
+					width: 100%;
+					height: 100%;
+
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					border-radius: 50%;
+				}
+
+				.analog-clock::before {
+					content: "";
+					position: absolute;
+					width: 10px;
+					height: 10px;
+					background-color: black;
+					border-radius: 50%;
+					z-index: 20;
+				}
+				.hour,
+				.min,
+				.sec {
+					position: absolute;
+				}
+
+				.hour,
+				#hr {
+					width: 100%;
+					height: 100%;
+				}
+				.min,
+				#mn {
+					width: 100%;
+					height: 100%;
+				}
+
+				.sec,
+				#sc {
+					width: 100%;
+					height: 100%;
+				}
+
+				#hr,
+				#mn,
+				#sc {
+					display: flex;
+					justify-content: center;
+
+					position: absolute;
+					border-radius: 50%;
+				}
+
+				#hr::before {
+					position: absolute;
+					content: "";
+					width: 4px;
+					height: 30%;
+					top: 20%;
+					background-color: black;
+
+					z-index: 10;
+					border-radius: 4px 4px 0 0;
+				}
+
+				#mn::before {
+					position: absolute;
+					content: "";
+					width: 2px;
+					height: 42%;
+					top: 8%;
+					background-color: black;
+					z-index: 11;
+				}
+
+				#sc::before {
+					position: absolute;
+					content: "";
+					width: 1px;
+					height: 60%;
+					top: 8%;
+					background-color: #ff105e;
+
+					z-index: 12;
+				}
 			</style>
 		</template>
 
@@ -144,10 +248,10 @@
 		<div class="list-container">
 			<input type="text" id="cityInput" placeholder="Search for city..." />
 			<ul id="cityList">
-				<li><button>new york</button></li>
-				<li><button>london</button></li>
-				<li><button>berlin</button></li>
-				<li><button>tokyo</button></li>
+				<li><button value="new_york">new york</button></li>
+				<li><button value="london">london</button></li>
+				<li><button value="berlin">berlin</button></li>
+				<li><button value="tokyo">tokyo</button></li>
 				<li><button>tehran</button></li>
 				<li><button>istanbul</button></li>
 				<li><button>toronto</button></li>
@@ -167,20 +271,6 @@
 				<li><button>istanbul</button></li>
 				<li><button>toronto</button></li>
 			</ul>
-		</div>
-
-		<div class="analog">
-			<div class="analog-clock">
-				<div class="hour">
-					<div id="hr"></div>
-				</div>
-				<div class="min">
-					<div id="mn"></div>
-				</div>
-				<div class="sec">
-					<div id="sc"></div>
-				</div>
-			</div>
 		</div>
 
 		<footer>

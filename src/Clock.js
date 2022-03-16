@@ -2,10 +2,13 @@ const timeZones = {
 	tehran: "Asia/Tehran",
 	berlin: "Europe/Berlin",
 	london: "Europe/London",
-	"new york": "America/New_York",
+	new_york: "America/New_York",
 	toronto: "America/Toronto",
 	tokyo: "Asia/Tokyo",
 	istanbul: "Asia/Istanbul",
+	baku: "Asia/Baku",
+	paris: "Europe/Paris",
+	sydney: "Australia/Sydney",
 };
 
 const weekDays = ["Son", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -31,7 +34,7 @@ class WorldClock extends HTMLElement {
 		const template = document.getElementById("world-clock-template").content;
 		const newClock = template.cloneNode(true);
 
-		this.#state = this.#EDIT;
+		this.#state = this.#NO_EDIT;
 		this.time = newClock.querySelector(".world-clock-time");
 		this.city = newClock.querySelector(".world-clock-city");
 		this.cityList = newClock.querySelector("#city-list");
@@ -39,6 +42,9 @@ class WorldClock extends HTMLElement {
 		this.btnEdit = newClock.querySelector(".button-edit");
 		this.btnDelete = newClock.querySelector(".button-delete");
 		this.citySelect = newClock.getElementById("city");
+		this.hr = newClock.getElementById("hr");
+		this.mn = newClock.getElementById("mn");
+		this.sc = newClock.getElementById("sc");
 
 		const date = new Date();
 		this.date.textContent =
@@ -57,7 +63,7 @@ class WorldClock extends HTMLElement {
 			event.preventDefault();
 			if (this.citySelect.value) {
 				if (this.#state === this.#EDIT) {
-					this.setAttribute("city", this.citySelect.value);
+					this.setAttribute("city", this.citySelect.value.replace(" ", "_"));
 					this.#state = this.#NO_EDIT;
 					this.citySelect.disabled = true;
 					this.btnEdit.textContent = "Edit";
@@ -94,6 +100,7 @@ class WorldClock extends HTMLElement {
 		if (name === "city") {
 			this.setCityTimeZone();
 			//this.city.textContent = newValue;
+			this.citySelect.value = newValue.replace("_", " ");
 		}
 	}
 
@@ -133,28 +140,42 @@ class WorldClock extends HTMLElement {
 	}
 
 	displayTime = () => {
-		this.time.textContent = this.getCurrentTime();
+		//this.time.textContent = this.getCurrentTime();
+		const deg = 6;
+		const day = this.getCurrentTime();
+
+		let hh = day.substring(0, 2) * 30;
+		let mm = day.substring(3, 5) * deg;
+		let ss = day.substring(6, 8) * deg;
+
+		// let hh = day.getHours() * 30;
+		// let mm = day.getMinutes() * deg;
+		// let ss = day.getSeconds() * deg;
+		this.hr.style.transform = `rotateZ(${hh + mm / 12}deg)`;
+		this.mn.style.transform = `rotateZ(${mm}deg)`;
+		this.sc.style.transform = `rotateZ(${ss}deg)`;
 	};
 }
 
 customElements.define("world-clock", WorldClock);
 
 const wrapper = document.getElementById("clock-wrapper");
-const add = document.getElementById("addClock");
 
-add.addEventListener("click", addClock);
+//const add = document.getElementById("addClock");
+//add.addEventListener("click", addClock);
+
 window.addEventListener("DOMContentLoaded", load);
 
 function load(event) {
-	addClock(event);
-	analogClock();
+	addClock(event, "tehran");
+	createCityList(timeZones);
 }
 
 let clockCollection = {};
 addClock.nextIndex = 0;
-function addClock(event) {
+function addClock(event, city) {
 	const clock = document.createElement("world-clock");
-	clock.setAttribute("city", "tehran");
+	clock.setAttribute("city", city);
 	clockCollection[addClock.nextIndex] = clock;
 	clock.setAttribute("id", addClock.nextIndex++);
 
@@ -174,27 +195,28 @@ function timerTick() {
 
 setInterval(timerTick, 500);
 
-// Analog clock
+// Populate list with city names
 
-const deg = 6;
-const hr = document.getElementById("hr");
-const mn = document.getElementById("mn");
-const sc = document.getElementById("sc");
+function createCityList(list) {
+	const keys = Object.keys(list);
+	let fragment = new DocumentFragment();
+	const ul = document.getElementById("cityList");
 
-setInterval(analogClock, 500);
-
-function analogClock() {
-	let day = new Date();
-	let hh = day.getHours() * 30;
-	let mm = day.getMinutes() * deg;
-	let ss = day.getSeconds() * deg;
-
-	hr.style.transform = `rotateZ(${hh + mm / 12}deg)`;
-	mn.style.transform = `rotateZ(${mm}deg)`;
-	sc.style.transform = `rotateZ(${ss}deg)`;
+	keys.forEach((key) => {
+		const li = document.createElement("li");
+		const button = document.createElement("button");
+		button.setAttribute("value", key);
+		button.textContent = key.replace("_", " ");
+		button.addEventListener("click", (e) => {
+			addClock(this, key);
+		});
+		li.appendChild(button);
+		fragment.appendChild(li);
+	});
+	ul.replaceChildren(fragment);
 }
 
-// Country search list
+// City search list
 
 const cityInput = document.getElementById("cityInput");
 cityInput.addEventListener("keyup", searchCity);
