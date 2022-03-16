@@ -141,6 +141,34 @@
 			<!-- <world-clock></world-clock> -->
 		</div>
 
+		<div class="list-container">
+			<input type="text" id="cityInput" placeholder="Search for city..." />
+			<ul id="cityList">
+				<li><button>new york</button></li>
+				<li><button>london</button></li>
+				<li><button>berlin</button></li>
+				<li><button>tokyo</button></li>
+				<li><button>tehran</button></li>
+				<li><button>istanbul</button></li>
+				<li><button>toronto</button></li>
+				<li><button>tehran</button></li>
+				<li><button>istanbul</button></li>
+				<li><button>toronto</button></li>
+				<li><button>tehran</button></li>
+				<li><button>istanbul</button></li>
+				<li><button>toronto</button></li>
+				<li><button>tehran</button></li>
+				<li><button>istanbul</button></li>
+				<li><button>toronto</button></li>
+				<li><button>tehran</button></li>
+				<li><button>istanbul</button></li>
+				<li><button>toronto</button></li>
+				<li><button>tehran</button></li>
+				<li><button>istanbul</button></li>
+				<li><button>toronto</button></li>
+			</ul>
+		</div>
+
 		<div class="analog">
 			<div class="analog-clock">
 				<div class="hour">
@@ -154,6 +182,7 @@
 				</div>
 			</div>
 		</div>
+
 		<footer>
 			<div class="menu-container">
 				<button id="addClock">&plus;</button>
@@ -165,22 +194,6 @@
 			</div>
 		</footer>
 		<script src="./src/Clock.js"></script>
-		<script>
-			const deg = 6;
-			const hr = document.getElementById("hr");
-			const mn = document.getElementById("mn");
-			const sc = document.getElementById("sc");
-
-			setInterval(() => {
-				let day = new Date();
-				let hh = day.getHours() * 30;
-				let mm = day.getMinutes() * deg;
-				let ss = day.getSeconds() * deg;
-
-				hr.style.transform = `rotateZ(${hh + mm / 12}deg)`;
-				mn.style.transform = `rotateZ(${mm}deg)`;
-				sc.style.transform = `rotateZ(${ss}deg)`;
-			}, 500);
-		</script>
+		<script></script>
 	</body>
 </html>

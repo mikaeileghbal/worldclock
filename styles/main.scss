@@ -10,6 +10,7 @@
 
 body {
 	background-color: rgb(199, 192, 163);
+	margin-left: 250px;
 }
 #addClock {
 	padding: 4px 4px;
@@ -51,4 +52,41 @@ footer {
 	padding: 8px 0;
 	max-width: 1240px;
 	margin: 0 auto;
+}
+
+.list-container {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 250px;
+	height: 100%;
+	padding: 8px;
+	overflow: auto;
+	background-color: #aaaaaa;
+}
+
+#cityInput {
+	background-image: url("../images/search.png");
+	background-position: 10px 12px;
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	width: 100%;
+	font-size: 16px;
+	padding: 12px 20px 12px 40px;
+	border: 1px solid #ddd;
+}
+
+ul button {
+	border: 1px solid #ddd;
+	background-color: #f6f6f6;
+	padding: 12px 20px;
+	font-size: 18px;
+	color: black;
+	display: block;
+	width: 100%;
+	text-align: left;
+	text-transform: capitalize;
+	&:hover {
+		background-color: #eee;
+	}
 }
