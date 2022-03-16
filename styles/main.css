@@ -1,7 +1,13 @@
 #clock-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  flex-flow: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap;
   max-width: 1240px;
   margin: 0 auto;
 }
@@ -12,6 +18,7 @@
   border: 1px solid #ddd;
   background-color: #fffdfd;
 }
+
 .clock-container * {
   margin: 8px;
 }
@@ -33,9 +40,15 @@
   width: 250px;
   height: 250px;
   background-color: #ddd;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-radius: 50%;
 }
 
@@ -76,8 +89,12 @@
 #hr,
 #mn,
 #sc {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   position: absolute;
   border-radius: 50%;
 }
@@ -115,7 +132,8 @@
 *,
 ::before,
 ::after {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -125,19 +143,15 @@ body {
 }
 
 #addClock {
-<<<<<<< HEAD
-  padding: 8px 12px;
-  font-size: 16px;
-=======
   padding: 4px 4px;
   width: 25px;
   height: 25px;
   font-size: 16px;
   font-weight: 800;
->>>>>>> 752fe819c94197e10c5f01055415844625d0632e
   border-radius: 50%;
-  box-sizing: unset;
-  border: 1px solid transparent;
+  -webkit-box-sizing: unset;
+          box-sizing: unset;
+  border: 2px solid #72ac25;
 }
 
 world-clock {
@@ -147,21 +161,26 @@ world-clock {
 
 @-webkit-keyframes appear {
   0% {
-    transform: scale(0);
+    -webkit-transform: scale(0);
+            transform: scale(0);
   }
   100% {
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 
 @keyframes appear {
   0% {
-    transform: scale(0);
+    -webkit-transform: scale(0);
+            transform: scale(0);
   }
   100% {
-    transform: scale(1);
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
+
 footer {
   width: 100%;
   padding: 5px;
@@ -171,12 +190,19 @@ footer {
 }
 
 .menu-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: white;
   width: 100%;
   padding: 8px 0;
   max-width: 1240px;
   margin: 0 auto;
-}/*# sourceMappingURL=main.css.map */
+}
+/*# sourceMappingURL=main.css.map */

@@ -3,35 +3,23 @@
 *,
 ::before,
 ::after {
-<<<<<<< HEAD
 	box-sizing: border-box;
-=======
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
->>>>>>> 752fe819c94197e10c5f01055415844625d0632e
+	margin: 0;
+	padding: 0;
 }
 
 body {
-  background-color: rgb(199, 192, 163);
+	background-color: rgb(199, 192, 163);
 }
 #addClock {
-<<<<<<< HEAD
-	padding: 8px 12px;
+	padding: 4px 4px;
+	width: 25px;
+	height: 25px;
 	font-size: 16px;
+	font-weight: 800;
 	border-radius: 50%;
 	box-sizing: unset;
-	border: 1px solid transparent;
-=======
-  padding: 4px 4px;
-  width: 25px;
-  height: 25px;
-  font-size: 16px;
-  font-weight: 800;
-  border-radius: 50%;
-  box-sizing: unset;
-  border: 2px solid #72ac25;
->>>>>>> 752fe819c94197e10c5f01055415844625d0632e
+	border: 2px solid #72ac25;
 }
 
 world-clock {
@@ -47,20 +35,20 @@ world-clock {
 	}
 }
 footer {
-  width: 100%;
-  padding: 5px;
-  background-color: rgba(0, 0, 0, 0.8);
-  position: fixed;
-  bottom: 0;
+	width: 100%;
+	padding: 5px;
+	background-color: rgba(0, 0, 0, 0.8);
+	position: fixed;
+	bottom: 0;
 }
 .menu-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 
-  color: white;
-  width: 100%;
-  padding: 8px 0;
-  max-width: 1240px;
-  margin: 0 auto;
+	color: white;
+	width: 100%;
+	padding: 8px 0;
+	max-width: 1240px;
+	margin: 0 auto;
 }
