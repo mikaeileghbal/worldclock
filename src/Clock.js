@@ -66,11 +66,11 @@ class WorldClock extends HTMLElement {
 					this.setAttribute("city", this.citySelect.value.replace(" ", "_"));
 					this.#state = this.#NO_EDIT;
 					this.citySelect.disabled = true;
-					this.btnEdit.textContent = "🖍";
+					this.btnEdit.textContent = "Edit";
 				} else {
 					this.#state = this.#EDIT;
 					this.citySelect.disabled = false;
-					this.btnEdit.textContent = "✔";
+					this.btnEdit.textContent = "Save";
 					this.citySelect.focus();
 				}
 			}
