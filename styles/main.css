@@ -1,13 +1,7 @@
 #clock-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-flow: wrap;
-      flex-flow: wrap;
+  flex-direction: row;
+  flex-flow: wrap;
   max-width: 1240px;
   margin: 0 auto;
 }
@@ -18,7 +12,6 @@
   border: 1px solid #ddd;
   background-color: #fffdfd;
 }
-
 .clock-container * {
   margin: 8px;
 }
@@ -38,8 +31,7 @@
 *,
 ::before,
 ::after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -57,8 +49,7 @@ body {
   font-size: 16px;
   font-weight: 800;
   border-radius: 50%;
-  -webkit-box-sizing: unset;
-          box-sizing: unset;
+  box-sizing: unset;
   border: 2px solid #72ac25;
 }
 
@@ -69,26 +60,21 @@ world-clock {
 
 @-webkit-keyframes appear {
   0% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
   }
   100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
   }
 }
 
 @keyframes appear {
   0% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
   }
   100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
   }
 }
-
 footer {
   display: none;
   width: 100%;
@@ -99,15 +85,9 @@ footer {
 }
 
 .menu-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
   color: white;
   width: 100%;
   padding: 8px 0;
@@ -137,8 +117,7 @@ footer {
   padding: 10px 20px 10px 40px;
   margin-bottom: 10px;
   border: 1px solid #888471;
-  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 18px 0 rgba(0, 0, 0, 0.19);
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 18px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 18px 0 rgba(0, 0, 0, 0.19);
   border-radius: 25px;
 }
 
@@ -163,18 +142,14 @@ ul button {
   text-align: left;
   text-transform: capitalize;
   cursor: pointer;
-  -webkit-transition: 0.2s;
   transition: 0.2s;
 }
-
 ul button:hover {
   background-color: #aaa27a;
   color: white;
   font-weight: 500;
   padding-left: 24px;
 }
-
 ul button:active {
   background-color: #888471;
-}
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */
