@@ -66,11 +66,11 @@ class WorldClock extends HTMLElement {
 					this.setAttribute("city", this.citySelect.value.replace(" ", "_"));
 					this.#state = this.#NO_EDIT;
 					this.citySelect.disabled = true;
-					this.btnEdit.textContent = "Edit";
+					this.btnEdit.textContent = "🖊";
 				} else {
 					this.#state = this.#EDIT;
 					this.citySelect.disabled = false;
-					this.btnEdit.textContent = "Save";
+					this.btnEdit.textContent = "✔";
 					this.citySelect.focus();
 				}
 			}
@@ -168,6 +168,9 @@ window.addEventListener("DOMContentLoaded", load);
 
 function load(event) {
 	addClock(event, "tehran");
+	addClock(event, "berlin");
+	addClock(event, "new_york");
+	addClock(event, "tokyo");
 	createCityList(timeZones);
 }
 
@@ -238,9 +241,20 @@ function searchCity(event) {
 	}
 }
 
-// Top menu
-const btnCityMenu = document.getElementById("city-menu");
-btnCityMenu.addEventListener("click", displayCityList);
-function displayCityList(e) {
-	document.getElementById("cityContainer").classList.toggle("show");
+// city list show hide
+const btnOpen = document.getElementById("openCityList");
+list = document.getElementById("cityContainer");
+
+btnOpen.addEventListener("click", openCityList);
+
+function openCityList(e) {
+	e.stopPropagation();
+	const listHeight = "300px";
+	if (list.style.height === listHeight) {
+		list.style.height = "0";
+		btnOpen.children[0].className = "fa fa-plus";
+	} else {
+		list.style.height = listHeight;
+		btnOpen.children[0].className = "fa fa-close";
+	}
 }
