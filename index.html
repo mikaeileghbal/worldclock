@@ -48,8 +48,8 @@
 								placeholder="City..."
 								disabled
 							/>
-							<button class="button-edit">Edit</button>
-							<button class="button-delete">x</button>
+							<button class="button-edit">🖊</button>
+							<button class="button-delete">❌</button>
 							<datalist id="city-list"> </datalist>
 						</div>
 					</form>
@@ -136,7 +136,7 @@
 					background-image: linear-gradient(to bottom, #555, #333);
 					color: white;
 					opacity: 0;
-					transition: 0.2s;
+					transition: 0s;
 				}
 				.world-clock-container:hover button {
 					opacity: 1;
@@ -147,11 +147,11 @@
 				}
 				.button-delete {
 					top: 8px;
-					right: 4px;
+					right: 8px;
 				}
 				.button-edit {
 					top: 8px;
-					left: 4px;
+					left: 8px;
 				}
 
 				.analog-clock {
@@ -248,7 +248,7 @@
 					<i class="fa fa-plus"></i>
 				</button>
 				<a class="logo" href="index.html">world clock</a>
-				<button class="top-button">about me</button>
+
 				<!-- city list -->
 				<div class="list-container" id="cityContainer">
 					<input type="text" id="cityInput" placeholder="Search for city..." />

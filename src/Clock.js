@@ -66,11 +66,11 @@ class WorldClock extends HTMLElement {
 					this.setAttribute("city", this.citySelect.value.replace(" ", "_"));
 					this.#state = this.#NO_EDIT;
 					this.citySelect.disabled = true;
-					this.btnEdit.textContent = "Edit";
+					this.btnEdit.textContent = "🖊";
 				} else {
 					this.#state = this.#EDIT;
 					this.citySelect.disabled = false;
-					this.btnEdit.textContent = "Save";
+					this.btnEdit.textContent = "✔";
 					this.citySelect.focus();
 				}
 			}
@@ -247,13 +247,14 @@ list = document.getElementById("cityContainer");
 
 btnOpen.addEventListener("click", openCityList);
 
-function openCityList() {
+function openCityList(e) {
+	e.stopPropagation();
 	const listHeight = "300px";
 	if (list.style.height === listHeight) {
-		console.log("close");
 		list.style.height = "0";
+		btnOpen.children[0].className = "fa fa-plus";
 	} else {
-		console.log("open");
 		list.style.height = listHeight;
+		btnOpen.children[0].className = "fa fa-close";
 	}
 }

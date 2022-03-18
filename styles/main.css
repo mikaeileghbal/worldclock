@@ -40,6 +40,15 @@
   padding: 0;
 }
 
+::-webkit-scrollbar {
+  width: 0.5em;
+  background-color: #efefef;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: gray;
+}
+
 body {
   background-color: #c7c0a3;
   font-family: Arial, Helvetica, sans-serif;
@@ -72,9 +81,6 @@ header .container {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
 }
 
 .logo {
@@ -83,6 +89,7 @@ header .container {
   color: #535149;
   color: #444;
   text-transform: capitalize;
+  margin: 0 auto;
 }
 
 .top-button {
@@ -277,6 +284,12 @@ footer .wrapper {
           align-items: flex-start;
 }
 
+@media screen and (max-width: 768px) {
+  footer .wrapper {
+    padding: 0 16px;
+  }
+}
+
 footer ul {
   list-style-type: none;
 }
@@ -284,6 +297,12 @@ footer ul {
 footer ul li {
   margin: 0px 0;
   display: inline-block;
+}
+
+@media screen and (max-width: 768px) {
+  footer ul li {
+    display: block;
+  }
 }
 
 footer .social {
@@ -352,6 +371,12 @@ footer a:hover {
 .copy {
   margin: 0 0;
   font-size: 12px;
+}
+
+@media screen and (max-width: 768px) {
+  .copy {
+    padding: 0 16px;
+  }
 }
 
 #copy {
