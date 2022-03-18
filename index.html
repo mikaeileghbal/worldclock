@@ -48,8 +48,8 @@
 								placeholder="City..."
 								disabled
 							/>
-							<button class="button-edit">Edit</button>
-							<button class="button-delete">x</button>
+							<button class="button-edit">🖊</button>
+							<button class="button-delete">❌</button>
 							<datalist id="city-list"> </datalist>
 						</div>
 					</form>
@@ -136,7 +136,7 @@
 					background-image: linear-gradient(to bottom, #555, #333);
 					color: white;
 					opacity: 0;
-					transition: 0.2s;
+					transition: 0s;
 				}
 				.world-clock-container:hover button {
 					opacity: 1;
@@ -147,11 +147,11 @@
 				}
 				.button-delete {
 					top: 8px;
-					right: 4px;
+					right: 8px;
 				}
 				.button-edit {
 					top: 8px;
-					left: 4px;
+					left: 8px;
 				}
 
 				.analog-clock {
@@ -244,39 +244,69 @@
 		<!-- header section -->
 		<header>
 			<div class="container">
-				<button class="top-button" id="city-menu">
-					<i class="fa fa-plus"></i> search city
+				<button class="top-button" id="openCityList">
+					<i class="fa fa-plus"></i>
 				</button>
 				<a class="logo" href="index.html">world clock</a>
-				<button class="top-button">about me</button>
-			</div>
-		</header>
-		<!-- main section -->
-		<main>
-			<div class="list-container" id="cityContainer">
-				<div class="wrapper">
+
+				<!-- city list -->
+				<div class="list-container" id="cityContainer">
 					<input type="text" id="cityInput" placeholder="Search for city..." />
-					<ul id="cityList">
-						<li><button value="new_york">new york</button></li>
-						<li><button value="london">london</button></li>
-						<li><button value="berlin">berlin</button></li>
-						<li><button value="tokyo">tokyo</button></li>
-					</ul>
+					<div class="wrapper">
+						<ul id="cityList">
+							<li><button value="new_york">new york</button></li>
+							<li><button value="london">london</button></li>
+							<li><button value="berlin">berlin</button></li>
+							<li><button value="tokyo">tokyo</button></li>
+						</ul>
+					</div>
 				</div>
 			</div>
+		</header>
+
+		<!-- background image -->
+		<div class="bg">
+			<div class="bg-container"></div>
+		</div>
+
+		<!-- main section -->
+		<main id="main">
 			<div id="clock-wrapper">
 				<!-- <world-clock></world-clock> -->
 			</div>
 		</main>
 		<!-- footer section -->
 		<footer>
-			<div class="menu-container">
-				<button id="addClock">&plus;</button>
-				<h5>World Clock</h5>
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam,
-					illo!
-				</p>
+			<div class="container">
+				<div class="wrapper">
+					<ul>
+						<li><a href="">home</a></li>
+						<li><a href="">portfolio</a></li>
+						<li><a href="">about me</a></li>
+						<li><a href="">projects</a></li>
+						<li><a href="">contact</a></li>
+						<li><a href="">resume</a></li>
+					</ul>
+
+					<ul class="social">
+						<li>
+							<a href=""><i class="fa fa-facebook"></i></a>
+						</li>
+						<li>
+							<a href=""><i class="fa fa-instagram"></i></a>
+						</li>
+						<li>
+							<a href=""><i class="fa fa-linkedin"></i></a>
+						</li>
+						<li>
+							<a href=""><i class="fa fa-github"></i></a>
+						</li>
+					</ul>
+				</div>
+				<div class="copy">
+					&copy;2022
+					<a id="copy" href="https://mikaeileghbal.github.io">mikaeil eghbal</a>
+				</div>
 			</div>
 		</footer>
 		<script src="./src/Clock.js"></script>
