@@ -237,3 +237,10 @@ function searchCity(event) {
 		}
 	}
 }
+
+// Top menu
+const btnCityMenu = document.getElementById("city-menu");
+btnCityMenu.addEventListener("click", displayCityList);
+function displayCityList(e) {
+	document.getElementById("cityContainer").classList.toggle("show");
+}
