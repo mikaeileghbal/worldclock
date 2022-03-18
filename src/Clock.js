@@ -168,6 +168,9 @@ window.addEventListener("DOMContentLoaded", load);
 
 function load(event) {
 	addClock(event, "tehran");
+	addClock(event, "berlin");
+	addClock(event, "new_york");
+	addClock(event, "tokyo");
 	createCityList(timeZones);
 }
 
@@ -238,9 +241,19 @@ function searchCity(event) {
 	}
 }
 
-// Top menu
-const btnCityMenu = document.getElementById("city-menu");
-btnCityMenu.addEventListener("click", displayCityList);
-function displayCityList(e) {
-	document.getElementById("cityContainer").classList.toggle("show");
+// city list show hide
+const btnOpen = document.getElementById("openCityList");
+list = document.getElementById("cityContainer");
+
+btnOpen.addEventListener("click", openCityList);
+
+function openCityList() {
+	const listHeight = "300px";
+	if (list.style.height === listHeight) {
+		console.log("close");
+		list.style.height = "0";
+	} else {
+		console.log("open");
+		list.style.height = listHeight;
+	}
 }

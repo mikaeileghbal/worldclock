@@ -1,14 +1,9 @@
 #clock-wrapper {
-	// display: flex;
-	// flex-direction: row;
-	// flex-flow: wrap;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
 	width: 100%;
 	margin: 0 auto;
-	padding: 1px;
-	//background-color: #333;
+	padding: 1px 16px;
 }
 .clock-container {
 	margin: 0px;
@@ -20,97 +15,13 @@
 		margin: 8px;
 	}
 }
-
 .clock-time-display {
 	padding: 8px;
 	background-color: cornflowerblue;
 	color: white;
 	font-size: 30px;
 }
-
 .clock-container.night {
 	background-color: #333;
 	color: white;
 }
-
-// .analog-clock {
-//   margin: 50px 200px;
-//   width: 250px;
-//   height: 250px;
-//   background-color: #ddd;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   border-radius: 50%;
-// }
-
-// .analog-clock::before {
-//   content: "";
-//   position: absolute;
-//   width: 15px;
-//   height: 15px;
-//   background-color: black;
-//   border-radius: 50%;
-//   z-index: 20;
-// }
-// .hour,
-// .min,
-// .sec {
-//   position: absolute;
-// }
-
-// .hour,
-// #hr {
-//   width: 160px;
-//   height: 160px;
-// }
-// .min,
-// #mn {
-//   width: 190px;
-//   height: 190px;
-// }
-
-// .sec,
-// #sc {
-//   width: 230px;
-//   height: 230px;
-// }
-
-// #hr,
-// #mn,
-// #sc {
-//   display: flex;
-//   justify-content: center;
-//   position: absolute;
-//   border-radius: 50%;
-// }
-
-// #hr::before {
-//   position: absolute;
-//   content: "";
-//   width: 8px;
-//   height: 80px;
-//   background-color: #ff105e;
-//   z-index: 10;
-//   border-radius: 6px 6px 0 0;
-// }
-
-// #mn::before {
-//   position: absolute;
-//   content: "";
-//   width: 4px;
-//   height: 90px;
-//   background-color: #fff;
-//   z-index: 11;
-//   border-radius: 6px 6px 0 0;
-// }
-
-// #sc::before {
-//   position: absolute;
-//   content: "";
-//   width: 2px;
-//   height: 150px;
-//   background-color: #fff;
-//   z-index: 12;
-//   border-radius: 6px 6px 0 0;
-// }
