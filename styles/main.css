@@ -1,20 +1,16 @@
 #clock-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-flow: wrap;
-      flex-flow: wrap;
-  max-width: 1240px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  width: 100%;
   margin: 0 auto;
+  padding: 1px;
 }
 
 .clock-container {
-  margin: 8px;
-  padding: 8px;
+  margin: 0px;
+  padding: 0px;
   border: 1px solid #ddd;
   background-color: #fffdfd;
 }
@@ -46,8 +42,11 @@
 
 body {
   background-color: #c7c0a3;
-  margin-left: 250px;
-  margin-top: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  text-decoration: none;
 }
 
 #addClock {
@@ -116,14 +115,58 @@ footer {
 }
 
 .list-container {
-  position: fixed;
+  position: absolute;
   left: 0;
-  top: 0;
+  top: 40px;
+  bottom: 0;
   width: 200px;
-  height: 100%;
-  padding: 8px;
-  overflow: auto;
+  height: 0;
+  padding: 0px;
+  overflow: hidden;
   background-color: rgba(0, 0, 0, 0.2);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.list-container ul {
+  border: 1px solid #888471;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.list-container ul button {
+  border: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 8px 20px;
+  font-size: 14px;
+  color: #ddd;
+  display: block;
+  width: 100%;
+  text-align: left;
+  text-transform: capitalize;
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.list-container ul button:hover {
+  background-color: #aaa27a;
+  color: white;
+  font-weight: 500;
+  padding-left: 24px;
+}
+
+.list-container ul button:active {
+  background-color: #888471;
+}
+
+.list-container .wrapper {
+  padding: 8px;
+  height: 100%;
+}
+
+.show.list-container {
+  height: 90%;
 }
 
 #cityInput {
@@ -146,35 +189,59 @@ footer {
   outline: none;
 }
 
-ul {
-  border: 1px solid #888471;
-  border-radius: 8px;
-  overflow: hidden;
+/* header section styles  */
+header {
+  width: 100%;
 }
 
-ul button {
-  border: none;
-  background-color: rgba(0, 0, 0, 0.1);
-  padding: 8px 20px;
-  font-size: 14px;
-  color: #ddd;
-  display: block;
-  width: 100%;
-  text-align: left;
+header .container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.logo {
+  font-size: 16px;
+  font-weight: 600;
+  color: #535149;
+  color: #444;
   text-transform: capitalize;
-  cursor: pointer;
+}
+
+.top-button {
+  padding: 8px 20px;
+  border-radius: 25px;
+  border: none;
+  text-transform: capitalize;
+  background-color: #efefef;
+  color: #444;
   -webkit-transition: 0.2s;
   transition: 0.2s;
 }
 
-ul button:hover {
-  background-color: #aaa27a;
-  color: white;
-  font-weight: 500;
-  padding-left: 24px;
+.top-button:hover {
+  background-color: #444;
+  color: #efefef;
 }
 
-ul button:active {
-  background-color: #888471;
+.top-button:active {
+  background-color: #111;
+}
+
+.top-button:focus {
+  outline: none;
 }
 /*# sourceMappingURL=main.css.map */

@@ -10,8 +10,11 @@
 
 body {
 	background-color: rgb(199, 192, 163);
-	margin-left: 250px;
-	margin-top: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	//margin-left: 200px;
+}
+a {
+	text-decoration: none;
 }
 #addClock {
 	padding: 4px 4px;
@@ -56,14 +59,51 @@ footer {
 }
 
 .list-container {
-	position: fixed;
+	position: absolute;
 	left: 0;
-	top: 0;
+	top: 40px;
+	bottom: 0;
 	width: 200px;
-	height: 100%;
-	padding: 8px;
-	overflow: auto;
+	height: 0;
+	padding: 0px;
+	overflow: hidden;
 	background-color: rgba(0, 0, 0, 0.2);
+	transition: 0.4s;
+	ul {
+		border: 1px solid rgb(136, 132, 113);
+		border-radius: 8px;
+		overflow: hidden;
+	}
+	ul button {
+		border: none;
+		background-color: rgba(0, 0, 0, 0.1);
+		padding: 8px 20px;
+		font-size: 14px;
+		color: #ddd;
+		display: block;
+		width: 100%;
+		text-align: left;
+		text-transform: capitalize;
+		cursor: pointer;
+		transition: 0.2s;
+		&:hover {
+			background-color: rgb(170, 162, 122);
+			color: white;
+			font-weight: 500;
+			padding-left: 24px;
+		}
+		&:active {
+			background-color: rgb(136, 132, 113);
+		}
+	}
+	.wrapper {
+		padding: 8px;
+		height: 100%;
+	}
+}
+
+.show.list-container {
+	height: 90%;
 }
 
 #cityInput {
@@ -83,30 +123,47 @@ footer {
 #cityInput:focus {
 	outline: none;
 }
-ul {
-	border: 1px solid rgb(136, 132, 113);
-	border-radius: 8px;
-	overflow: hidden;
-}
-ul button {
-	border: none;
-	background-color: rgba(0, 0, 0, 0.1);
-	padding: 8px 20px;
-	font-size: 14px;
-	color: #ddd;
-	display: block;
+
+/* header section styles  */
+header {
 	width: 100%;
-	text-align: left;
+
+	.container {
+		max-width: 1280px;
+		margin: 0 auto;
+		padding: 16px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+}
+
+.logo {
+	font-size: 16px;
+	font-weight: 600;
+	color: rgb(83, 81, 73);
+	color: #444;
 	text-transform: capitalize;
-	cursor: pointer;
+}
+
+.top-button {
+	padding: 8px 20px;
+	border-radius: 25px;
+	border: none;
+	text-transform: capitalize;
+	background-color: #efefef;
+	color: #444;
 	transition: 0.2s;
+
 	&:hover {
-		background-color: rgb(170, 162, 122);
-		color: white;
-		font-weight: 500;
-		padding-left: 24px;
+		background-color: #444;
+		color: #efefef;
 	}
 	&:active {
-		background-color: rgb(136, 132, 113);
+		background-color: #111;
+	}
+	&:focus {
+		outline: none;
 	}
 }

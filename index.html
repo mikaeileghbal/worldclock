@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
 		<link
 			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
 			rel="stylesheet"
@@ -59,18 +60,16 @@
 			<style>
 				* {
 					box-sizing: border-box;
-					font-family: Georgia, "Times New Roman", Times, serif;
 				}
 				.world-clock-container {
 					position: relative;
 					background-color: rgba(0, 0, 0, 0.05);
-					border-radius: 10px;
 					display: flex;
 					flex-flow: column nowrap;
 					align-items: center;
 					justify-content: center;
-					padding: 16px 8px 16px;
-					margin: 4px 26px;
+					padding: 32px 40px;
+					margin: 1px;
 				}
 				.world-clock-date {
 					font-size: 14px;
@@ -83,15 +82,14 @@
 					background-image: url("images/clock.png");
 					background-repeat: no-repeat;
 					background-size: 100%;
-					margin: 12px auto;
+					margin: 0px auto 12px;
 					width: 160px;
 					height: 160px;
 					font-weight: 600;
 					text-align: center;
 					border-radius: 50%;
-					border: 6px solid #333;
+					border: 1px solid #333;
 					box-shadow: 1px 2px 4px 2px rgba(0, 0, 0, 0.2);
-
 					color: black;
 				}
 				.world-clock-city {
@@ -243,39 +241,34 @@
 				}
 			</style>
 		</template>
-
-		<div id="clock-wrapper">
-			<!-- <world-clock></world-clock> -->
-		</div>
-
-		<div class="list-container">
-			<input type="text" id="cityInput" placeholder="Search for city..." />
-			<ul id="cityList">
-				<li><button value="new_york">new york</button></li>
-				<li><button value="london">london</button></li>
-				<li><button value="berlin">berlin</button></li>
-				<li><button value="tokyo">tokyo</button></li>
-				<li><button>tehran</button></li>
-				<li><button>istanbul</button></li>
-				<li><button>toronto</button></li>
-				<li><button>tehran</button></li>
-				<li><button>istanbul</button></li>
-				<li><button>toronto</button></li>
-				<li><button>tehran</button></li>
-				<li><button>istanbul</button></li>
-				<li><button>toronto</button></li>
-				<li><button>tehran</button></li>
-				<li><button>istanbul</button></li>
-				<li><button>toronto</button></li>
-				<li><button>tehran</button></li>
-				<li><button>istanbul</button></li>
-				<li><button>toronto</button></li>
-				<li><button>tehran</button></li>
-				<li><button>istanbul</button></li>
-				<li><button>toronto</button></li>
-			</ul>
-		</div>
-
+		<!-- header section -->
+		<header>
+			<div class="container">
+				<button class="top-button" id="city-menu">
+					<i class="fa fa-plus"></i> search city
+				</button>
+				<a class="logo" href="index.html">world clock</a>
+				<button class="top-button">about me</button>
+			</div>
+		</header>
+		<!-- main section -->
+		<main>
+			<div class="list-container" id="cityContainer">
+				<div class="wrapper">
+					<input type="text" id="cityInput" placeholder="Search for city..." />
+					<ul id="cityList">
+						<li><button value="new_york">new york</button></li>
+						<li><button value="london">london</button></li>
+						<li><button value="berlin">berlin</button></li>
+						<li><button value="tokyo">tokyo</button></li>
+					</ul>
+				</div>
+			</div>
+			<div id="clock-wrapper">
+				<!-- <world-clock></world-clock> -->
+			</div>
+		</main>
+		<!-- footer section -->
 		<footer>
 			<div class="menu-container">
 				<button id="addClock">&plus;</button>
