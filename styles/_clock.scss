@@ -1,14 +1,18 @@
 #clock-wrapper {
-	display: flex;
-	flex-direction: row;
-	flex-flow: wrap;
-	max-width: 1240px;
+	// display: flex;
+	// flex-direction: row;
+	// flex-flow: wrap;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+	width: 100%;
 	margin: 0 auto;
+	padding: 1px;
 	//background-color: #333;
 }
 .clock-container {
-	margin: 8px;
-	padding: 8px;
+	margin: 0px;
+	padding: 0px;
 	border: 1px solid #ddd;
 	background-color: #fffdfd;
 
