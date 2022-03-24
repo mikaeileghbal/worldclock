@@ -116,16 +116,6 @@ class WorldClock extends HTMLElement {
 		return collection;
 	}
 
-	getCityList(list) {
-		const collection = [];
-		for (const key in list) {
-			const option = new Option();
-			option.value = key;
-			collection.push(option);
-		}
-		return collection;
-	}
-
 	setCityTimeZone() {
 		for (const key in timeZones) {
 			if (key.toLowerCase() === this.getAttribute("city").toLowerCase()) {
@@ -211,6 +201,7 @@ function createCityList(list) {
 		button.setAttribute("value", key);
 		button.textContent = key.replace("_", " ");
 		button.addEventListener("click", (e) => {
+			e.stopPropagation();
 			addClock(this, key);
 		});
 		li.appendChild(button);
@@ -258,3 +249,8 @@ function openCityList(e) {
 		btnOpen.children[0].className = "fa fa-close";
 	}
 }
+
+document.addEventListener("click", (e) => {
+	list.style.height = 0;
+	btnOpen.children[0].className = "fa fa-plus";
+});
