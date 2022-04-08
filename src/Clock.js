@@ -216,6 +216,7 @@ const cityInput = document.getElementById("cityInput");
 cityInput.addEventListener("keyup", searchCity);
 
 function searchCity(event) {
+	event.stopPropagation();
 	let i, btn, textValue;
 	const input = event.target;
 	const filter = input.value.toUpperCase(0);
@@ -253,4 +254,8 @@ function openCityList(e) {
 document.addEventListener("click", (e) => {
 	list.style.height = 0;
 	btnOpen.children[0].className = "fa fa-plus";
+});
+
+document.getElementById("cityContainer").addEventListener("click", (e) => {
+	e.stopPropagation();
 });
