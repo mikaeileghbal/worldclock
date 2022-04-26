@@ -1,8 +1,6 @@
 #clock-wrapper {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   width: 100%;
   margin: 0 auto;
   padding: 1px 16px;
@@ -14,7 +12,6 @@
   border: 1px solid #ddd;
   background-color: #fffdfd;
 }
-
 .clock-container * {
   margin: 8px;
 }
@@ -34,8 +31,7 @@
 *,
 ::before,
 ::after {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -50,7 +46,7 @@
 }
 
 body {
-  background-color: #c7c0a3;
+  background-color: rgb(199, 192, 163);
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -65,54 +61,43 @@ header {
   width: 100%;
   background-color: #efefef;
 }
-
 header .container {
   max-width: 1280px;
   position: relative;
   margin: 0 auto;
   padding: 16px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
 }
 
 .logo {
   font-size: 16px;
   font-weight: 600;
-  color: #535149;
+  color: rgb(83, 81, 73);
   color: #444;
   text-transform: capitalize;
   margin: 0 auto;
 }
 
 .top-button {
+  position: absolute;
   padding: 8px 20px;
   border-radius: 25px;
   border: 1px solid #444;
   text-transform: capitalize;
   background-color: #efefef;
   color: #444;
-  -webkit-transition: 0.2s;
   transition: 0.2s;
   cursor: pointer;
 }
-
 .top-button:hover {
   background-color: #444;
   color: #efefef;
 }
-
 .top-button:active {
   background-color: #111;
 }
-
 .top-button:focus {
   outline: none;
 }
@@ -124,8 +109,7 @@ header .container {
   font-size: 16px;
   font-weight: 800;
   border-radius: 50%;
-  -webkit-box-sizing: unset;
-          box-sizing: unset;
+  box-sizing: unset;
   border: 2px solid #72ac25;
 }
 
@@ -136,26 +120,21 @@ world-clock {
 
 @-webkit-keyframes appear {
   0% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
   }
   100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
   }
 }
 
 @keyframes appear {
   0% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
+    transform: scale(0);
   }
   100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
   }
 }
-
 main {
   position: relative;
   max-width: 1280px;
@@ -166,47 +145,39 @@ main {
 .list-container {
   position: absolute;
   z-index: 30;
-  top: 65px;
+  top: 50px;
   height: 0;
   right: 16px;
   left: 16px;
   background-color: #efefef;
-  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
   overflow: hidden;
-  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
-
 .list-container ul {
   overflow: hidden;
 }
-
 .list-container ul button {
   border: none;
   padding: 8px 20px;
   font-size: 14px;
-  color: #aaa27a;
+  color: rgb(170, 162, 122);
   display: block;
   width: 150px;
   text-align: left;
   text-transform: capitalize;
   cursor: pointer;
-  -webkit-transition: 0.2s;
   transition: 0.2s;
 }
-
 .list-container ul button:hover {
   font-weight: 600;
   padding-left: 24px;
   color: black;
 }
-
 .list-container ul button:active {
-  background-color: #888471;
+  background-color: rgb(136, 132, 113);
   font-weight: 600;
 }
-
 .list-container .wrapper {
   margin: 8px 0;
   padding: 0 16px 24px;
@@ -227,11 +198,11 @@ main {
   .list-container {
     padding-top: 15px;
   }
+
   .list-container a {
     font-size: 12px;
   }
 }
-
 .show.list-container {
   height: 90%;
 }
@@ -241,14 +212,13 @@ main {
   background-position: 10px 10px;
   background-repeat: no-repeat;
   background-size: 18px 18px;
-  width: calc(min(90%, 250px));
+  width: min(90%, 250px);
   font-size: 14px;
   font-weight: 500;
   padding: 10px 20px 10px 40px;
   margin: 10px;
-  border: 1px solid #888471;
-  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid rgb(136, 132, 113);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   background-color: #efefef;
   border-radius: 25px;
 }
@@ -263,7 +233,6 @@ footer {
   padding: 5px;
   background-color: #efefef;
 }
-
 footer .container {
   color: #444;
   max-width: 1280px;
@@ -271,78 +240,55 @@ footer .container {
   max-width: 1240px;
   margin: 0 auto;
 }
-
 footer .wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  justify-content: space-between;
+  align-items: flex-start;
 }
-
 @media screen and (max-width: 768px) {
   footer .wrapper {
     padding: 0 16px;
   }
 }
-
 footer ul {
   list-style-type: none;
 }
-
 footer ul li {
   margin: 0px 0;
   display: inline-block;
 }
-
 @media screen and (max-width: 768px) {
   footer ul li {
     display: block;
   }
 }
-
 footer .social {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  justify-content: center;
+  align-items: flex-start;
 }
-
 footer .social li {
   margin: 0x;
   width: 40px;
   padding: 0;
   text-align: right;
 }
-
 footer .social a {
   padding: 8px 0;
   margin: 0;
   font-size: 18px;
   text-align: right;
 }
-
 footer a {
   text-transform: uppercase;
   font-size: 14px;
-  color: #aaa27a;
+  color: rgb(170, 162, 122);
   display: inline-block;
   cursor: pointer;
   padding: 8px 0px;
-  -webkit-transition: 0.2s;
   transition: 0.2s;
   margin-right: 16px;
 }
-
 footer a:hover {
   color: black;
 }
@@ -358,7 +304,7 @@ footer a:hover {
 
 .bg {
   position: relative;
-  background-color: #888471;
+  background-color: rgb(136, 132, 113);
   background-image: url("../images/world.png");
   background-position: center;
   background-repeat: no-repeat;
@@ -372,7 +318,6 @@ footer a:hover {
   margin: 0 0;
   font-size: 12px;
 }
-
 @media screen and (max-width: 768px) {
   .copy {
     padding: 0 16px;
@@ -382,5 +327,4 @@ footer a:hover {
 #copy {
   font-size: 12px;
   width: 170px;
-}
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */
